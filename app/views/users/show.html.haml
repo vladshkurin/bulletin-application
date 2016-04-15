@@ -1,0 +1,12 @@
+.row
+  .col-md-6
+    %h2= @user.full_name
+    %h3= @user.email
+    %p= @user.address
+    %p= @user.city
+    %p= @user.country
+    %p= @user.state
+    %p= @user.birthday
+    %p= @user.zip
+  .col-md-6
+    = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}"

@@ -1,0 +1,20 @@
+.col-md-8.col-md-offset-2
+  .message-show
+    %h2= @message.title
+    %p.message-posted-by
+      Posted by #{@message.user.email} #{time_ago_in_words(@message.created_at)} ago
+    %p.message-desc= @message.description
+    / Add a Posted By: username at timestamp.
+    %h3.comment-section-header Comments:
+    / renders the _comment.html.erb partial file.
+    %p= render @message.comments
+    %p.comments
+    %h3.reply-to-msg Reply to Message:
+    / renders the comments form
+    = render 'comments/form'
+    / Add a conditional so that the 'edit' and 'destroy' links only appear for the user who created the message.
+    .links.btn-group
+      = link_to "Back", root_path, class: "btn btn-default"
+      - if @message.user_id == current_user.id
+        = link_to "Edit", edit_message_path(@message), class: "btn btn-default"
+        = link_to "Delete", message_path(@message), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"

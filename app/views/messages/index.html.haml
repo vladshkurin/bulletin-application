@@ -1,0 +1,5 @@
+- @messages.each do |message|
+  .col-md-4
+    .message
+      %h2.message-title= message.title
+      = link_to "View Message", message, class: "btn-custom"

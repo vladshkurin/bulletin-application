@@ -1,0 +1,11 @@
+= simple_form_for([@message, @message.comments.build], remote: true) do |f|
+  = f.input :content, label: "Comment"
+  = f.button :submit, :class => 'btn-custom'
+
+:coffee
+  $(document).ready ->
+    $("#new_comment").on("ajax:success", (e, data, status, xhr) ->
+      $(".comments").append xhr.responseText
+      $("#comment_content").val("")
+     ).on "ajax:error", (e, xhr, status, error) ->
+      # $("#new_article").append "<p>ERROR</p>"

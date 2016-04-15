@@ -1,0 +1,13 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th Name
+      %th City
+      %th Email
+      %th Link
+  - @users.each do |user|
+    %tr
+      %td= user.full_name
+      %td= user.city
+      %td= user.email
+      %td= link_to "View User", user

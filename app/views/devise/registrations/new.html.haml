@@ -1,0 +1,19 @@
+.col-md-8.col-md-offset-2
+  %h2 Sign up
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = f.error_notification
+    .form-inputs
+      = f.input :login, required: true, autofocus: true
+      = f.input :full_name, required: true, autofocus: true
+      = f.input :address, required: true, autofocus: true
+      = f.input :city, required: true, autofocus: true
+      = f.input :country, required: true, autofocus: true
+      = f.input :state, required: true, autofocus: true
+      = f.date_field :birthday, as: :date, required: true, autofocus: true
+      = f.input :zip, required: true, autofocus: true
+      = f.input :email, required: true, autofocus: true
+      = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable)
+      = f.input :password_confirmation, required: true
+    .form-actions
+      = f.button :submit, "Sign up"
+  = render "devise/shared/links"
