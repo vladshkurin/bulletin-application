@@ -9,12 +9,13 @@
     / renders the _comment.html.erb partial file.
     %p= render @message.comments
     %p.comments
-    %h3.reply-to-msg Reply to Message:
-    / renders the comments form
-    = render 'comments/form'
+    - if user_signed_in?
+      %h3.reply-to-msg Reply to Message:
+      / renders the comments form
+      = render 'comments/form'
     / Add a conditional so that the 'edit' and 'destroy' links only appear for the user who created the message.
     .links.btn-group
       = link_to "Back", root_path, class: "btn btn-default"
-      - if @message.user_id == current_user.id
+      - if user_signed_in? and (@message.user_id == current_user.id or current_user.has_role? :moderator)
         = link_to "Edit", edit_message_path(@message), class: "btn btn-default"
         = link_to "Delete", message_path(@message), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"

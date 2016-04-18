@@ -4,9 +4,11 @@
       = f.error_notification
       .form-inputs
         = f.input :email, required: true, autofocus: true
-        = f.input :login, required: true, autofocus: true
+        = f.input :username, required: true, autofocus: true
         = f.input :full_name, required: true, autofocus: true
-        = f.date_field :birthday, required: true, autofocus: true
+        .form-group.string.required.user_birthday
+          %label.string.required.control-label * Birthday
+          = f.date_select :birthday,:start_year => 1940, required: true, autofocus: true, class: 'form-control'
         = f.input :address, required: true, autofocus: true
         = f.input :city, required: true, autofocus: true
         = f.input :state, required: true, autofocus: true
@@ -17,7 +19,7 @@
             Currently waiting confirmation for: #{resource.unconfirmed_email}
         = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
         = f.input :password_confirmation, required: false
-        = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
+        -# = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
       .form-actions
         = f.button :submit, "Update"
     %h3 Cancel my account

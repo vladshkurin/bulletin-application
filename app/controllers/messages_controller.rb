@@ -1,8 +1,13 @@
 class MessagesController < ApplicationController
+  load_and_authorize_resource
   before_action :find_message, only: [:show, :edit, :update, :destroy]
 
   def index
-    @messages = Message.all.order("created_at DESC")
+    @messages = if params[:search] and not params[:search].empty?
+      Message.search(params[:search])
+    else
+      Message.all.order("created_at DESC")
+    end
   end
 
   def show

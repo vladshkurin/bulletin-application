@@ -14,30 +14,16 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:account_update) << [
-      :login,
-      :email,
-      :full_name,
-      :address,
-      :city,
-      :country,
-      :state,
-      :birthday,
-      :zip
+      :login, :email, :full_name, :address, :city,
+      :country, :state, :birthday, :zip,
+      :password, :password_confirmation
     ]
     devise_parameter_sanitizer.for(:sign_in) << [
-      :login, :email, :password, :remember_me,
+      :login, :email, :password, :remember_me
     ]
     devise_parameter_sanitizer.for(:sign_up) << [
-      :login,
-      :email,
-      :password,
-      :full_name,
-      :address,
-      :city,
-      :country,
-      :state,
-      :birthday,
-      :zip
+      :login, :email, :password, :full_name, :address,
+      :city, :country, :state, :birthday, :zip
     ]
   end
 end

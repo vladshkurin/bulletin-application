@@ -1,0 +1,19 @@
+.row
+  .col-md-6
+    = simple_form_for @user do |f|
+      = f.error_notification
+      .form-inputs
+        = f.input :email, required: true, autofocus: true
+        = f.input :username, required: true, autofocus: true
+        = f.input :full_name, required: true, autofocus: true
+        .form-group.string.required.user_birthday
+          %label.string.required.control-label * Birthday
+          = f.date_select :birthday,:start_year => 1940, required: true, autofocus: true, class: 'form-control'
+        = f.input :address, required: true, autofocus: true
+        = f.input :city, required: true, autofocus: true
+        = f.input :state, required: true, autofocus: true
+        = f.input :country, required: true, autofocus: true
+        = f.input :zip, required: true, autofocus: true
+        = f.association :roles, as: :check_boxes, collection: Role.all
+      .form-actions
+        = f.button :submit, "Update"
