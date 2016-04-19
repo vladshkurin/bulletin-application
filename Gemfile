@@ -21,6 +21,7 @@ gem 'omniauth-twitter'
 gem 'cancancan'
 gem 'rolify'
 gem 'bootstrap-datepicker-rails'
+gem 'pg'
 
 group :development, :test do
   gem 'byebug'
@@ -39,6 +40,5 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
