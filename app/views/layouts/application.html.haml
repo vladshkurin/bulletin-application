@@ -27,7 +27,7 @@
           - else
             %li= link_to "Sign Up", new_user_registration_path
             %li= link_to "Log In", new_user_session_path
-            %li= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter), class: "fa fa-twitter"
+            %li= link_to "Sign In", user_omniauth_authorize_path(:twitter), class: "fa fa-twitter"
     .container
       = flash_messages
       = yield
