@@ -48,5 +48,5 @@ bundle exec rspec .
 - Регистрация.
 - Профиль
 
-A live demo of Requests Trap can be viewed
+A live demo of Bulletin Board can be viewed
 [here](https://young-hollows-96095.herokuapp.com/)
