@@ -15,7 +15,7 @@ bundle exec rspec .
 
 ### Admin account
 
-You can create the admin user by running rake ```db:seed``` with the following credentials: admin@example.com:12345678. This account already exists in heroku application.
+You can create the admin user by running```rake db:seed``` with the following credentials: admin@example.com:12345678. This account already exists in heroku application.
 ```
 rake db:seed
 ```
