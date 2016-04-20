@@ -20,6 +20,7 @@ You can create the admin user by running```rake db:seed``` with the following cr
 rake db:seed
 ```
 
+
 ### Доска объявлений
 Пользовательская система:
 - Регистрация нового пользователя.
