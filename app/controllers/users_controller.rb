@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    unless params[:user][:birthday].empty?
+    unless params[:user][:birthday].blank?
       params[:user][:birthday] = DateTime.strptime(params[:user][:birthday], "%d/%m/%Y")
     end
     if @user.update(user_params)

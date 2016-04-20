@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   belongs_to :role
 
   validates :username, uniqueness: true
-  validates :username, :full_name, :birthday, :address, :city, :state, :country, :zip, :presence => true
+  #validates :username, :full_name, :birthday, :address, :city, :state, :country, :zip, :presence => true
 
   after_validation :geocode
   after_create :assign_user_role
