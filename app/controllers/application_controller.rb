@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
       :login, :email, :password, :remember_me
     ]
     devise_parameter_sanitizer.for(:sign_up) << [
-      :login, :email, :password, :full_name, :address,
+     :username, :login, :email, :password, :full_name, :address,
       :city, :country, :state, :birthday, :zip
     ]
   end

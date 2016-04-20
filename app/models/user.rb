@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
 
   belongs_to :role
 
+  validates :username, uniqueness: true
+  validates :username, :full_name, :birthday, :address, :city, :state, :country, :zip, :presence => true
+
   after_validation :geocode
   after_create :assign_user_role
 
@@ -24,12 +27,16 @@ class User < ActiveRecord::Base
   end
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.username = auth.info.nickname
-      user.password = Devise.friendly_token[0,20]
-    end
+    user = where(provider: auth.provider, uid: auth.uid).first
+    return user if user
+    user = User.new(
+      provider: auth.provider,
+      uid: auth.uid,
+      username: auth.info.nickname,
+      password: Devise.friendly_token[0,20]
+    )
+    user.save(validate: false)
+    user
   end
 
   def self.new_session(params, session)
